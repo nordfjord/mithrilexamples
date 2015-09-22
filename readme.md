@@ -1,21 +1,16 @@
 # Talk
 
-The talk should focus on introducing new people to Mithril,
-We should try to avoid attacking other methodologies and frameworks and simply showcase the awesomeness that is mithril.
+The slides can be found at: https://slides.com/einarnordfjord/deck
 
 # What is mithril
 
-mithril is a set of tools for building single page applications, yes that is a fancy way of saying framework.
+Mithril is a client-side MVC framework - a tool to organize code in a way that is easy to think about and to maintain.
 
-What are these tools though?
-
-mithril exposes
-
-* templating engine (m)
-* promise implementation (A+ compliant) (m.deferred)
-* request thingamajic (m.request)
-* rendering engine (m.(redraw|startComputation|endComputation))
-* components (m.component)
+Light-weight  |  Robust | Fast
+--------------|---------|----------
+12kb gzipped | Safe-by-default templates | Virtual DOM diffing and compilable templates
+Small API | Hierarchical MVC via components | Intelligent auto-redrawing system
+Small learning curve ||
 
 Mithrils developer @lhorie stated in a blog post that he had worked with Angular prior to making mithril.
 
@@ -26,11 +21,30 @@ This has some immediate benefits such as
 1. Error lines in console lead to actual source of error, not an error in an HTML parser
 2. Better performance since there's no need to write an HTML parser.
 
+# How it compares
+Framework | Loading | Rendering
+----------|---------|-----------
+mithril   | 0.28ms  | 9.44ms
+jQuery    | 13.11ms | 40.27ms
+Backbone  | 18.53ms | 23.05ms
+Angular   | 7.49ms  | 118.63ms
+React     | 24.99ms | 79.65ms
+
+# differences from other frameworks
+
+See Leo's excellent piece on just that [here](http://lhorie.github.io/mithril/comparison.html)
+
+# The examples
+
+The examples go from a `Hello World!` example and end with integrating Select2 into mithril.
+
+example 4 is one of my favourites since it shows how powerful the redrawing system is (try selecting a few rows of the table as they are changin, and be amazed that the selection holds through redraw).
+
 # Regarding Flux
 
-Since flux is all the rage right now it might be good to talk about mithril and flux for some time.
+Since flux is all the rage right now it might be good to talk about mithril and flux.
 
-I should probably use @barneycarrols answer in the flux debate
+I should probably point to @barneycarrol who had this answer in the flux debate
 
 > One of the big differences between Mithril and other MVC libraries is that Mithril aims to make events / dispatching automatic. The idea is that if you write self-validating models (ie models shouldn't depend upon external logic to keep their internal state coherent), Mithril will infer when a change might have occurred and go through all your views, modifying the parts in the DOM that have changed.
 
@@ -48,36 +62,3 @@ If you know a change in one of your model has occurred through some other means,
 >Mithril's blazing fast DOM diffing engine: all views are recomputed on any possible change, so they will all automatically be up to date with your latest model state. Mithril has a very light touch so even if you're comparing tens of thousands of elements and only a few data points may have changed, this is still faster than anything else in most situations. Plus, Mithril has all sorts of clever ways to change only the parts of the DOM that need to.
 The fact the model will be queried continuously means you can't allow it to fall into invalid states. So rather than writing a model that can easily fall into states you wouldn't want the user to see, and then writing complex dispatchers to try and compensate for these failings, you make the models self-validating in the first instance, and you loose a layer of complexity.
 If you think you really need some kind of eventing system like Flux, I'd be happy to advise you on how to accomplish given scenarios with Mithril.
-
-# The famouse two-way data binding craze written in mithril
-
-```javascript
-var app = {};
-
-app.controller = function(){
-    this.name = m.prop('');
-};
-
-app.view = function(ctrl){
-    return m('.container', [
-        m('h1', 'The amazing Thing'),
-        m('input[type=text]', {
-            oninput: m.withAttr('value', ctrl.name),
-            value: ctrl.name()
-        }),
-        m('span', ctrl.name())
-    ]);
-};
-
-m.mount(document.body, app);
-```
-
-# Performance
-Most important factors include
-
-* startup time
-* rendering time
-
-## Startup
-
-Mithrils file size is an incredible 16Kb (gzipped), so loading the javascript file is negligible, but for fun, let's see how it compares to other frameworks
