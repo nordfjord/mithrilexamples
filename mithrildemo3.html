@@ -1,0 +1,30 @@
+<head>
+<title>Mithril Demo 1</title>
+<style>
+	body { background-color: #fff; }
+</style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mithril/0.2.0/mithril.min.js"></script>
+<script>
+Users = {
+    list: function(){
+        return m.request({url: "users.json", method: "GET", initialValue: []});
+    }
+};
+var app = {};
+app.controller = function () {
+    this.users = Users.list();
+};
+app.view = function ( ctrl ) {
+    return m("ul", [
+        ctrl.users().map(function(user){
+            return m( "li", user.name + ": @" + user.username );
+        })
+    ]);
+};
+m.mount( document.body, app );
+</script>
+</body>
+</html>
+

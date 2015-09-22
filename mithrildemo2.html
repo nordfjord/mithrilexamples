@@ -1,0 +1,27 @@
+<head>
+<title>Mithril Demo 1</title>
+<style>
+	body { background-color: #fff; }
+</style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mithril/0.2.0/mithril.min.js"></script>
+<script>
+var app = {};
+app.controller = function () {
+    this.name = m.prop( '' );
+};
+app.view = function ( ctrl ) {
+    return [
+        m( 'input', {
+            value: ctrl.name(),
+            oninput: m.withAttr( 'value', ctrl.name )
+        } ),
+        m( 'h1', 'Hi ' + ctrl.name() )
+    ];
+};
+m.mount( document.body, app );
+</script>
+</body>
+</html>
+

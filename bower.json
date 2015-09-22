@@ -1,0 +1,13 @@
+{
+  "name": "mithril-talk",
+  "version": "1.0.0",
+  "authors": [
+    "Einar Norðfjörð <einar@vortex.is>"
+  ],
+  "description": "Mithril talk examples",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "select2": "~4.0.0"
+  }
+}

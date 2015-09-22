@@ -1,0 +1,20 @@
+<head>
+<title>Mithril Demo 1</title>
+<style>
+	body { background-color: #fff; }
+</style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mithril/0.2.0/mithril.min.js"></script>
+<script>
+var app = {};
+
+app.view = function(){
+  return m('h1', 'Hello World!');
+};
+
+m.mount(document.body, app);
+</script>
+</body>
+</html>
+
