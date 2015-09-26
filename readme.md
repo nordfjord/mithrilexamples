@@ -40,6 +40,7 @@ The examples go from a `Hello World!` example and end with integrating Select2 i
 
 example 4 is one of my favourites since it shows how powerful the redrawing system is (try selecting a few rows of the table as they are changin, and be amazed that the selection holds through redraw).
 
+in the components directory you can see my components based version of todoMVC.
 # Regarding Flux
 
 Since flux is all the rage right now it might be good to talk about mithril and flux.
