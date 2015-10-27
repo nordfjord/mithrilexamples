@@ -1,6 +1,7 @@
 # Talk
 
 The slides can be found at: https://slides.com/einarnordfjord/deck
+The actual talk is located here: https://www.youtube.com/watch?v=J-zTZtFdjFw
 
 # What is mithril
 
